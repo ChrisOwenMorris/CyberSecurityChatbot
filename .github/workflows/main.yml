@@ -8,11 +8,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '9.0.x' # Or your target .NET version
+
     - name: Restore dependencies
-      run: dotnet restore CybersecurityChatbot.csproj
+      run: dotnet restore src/CybersecurityChatbot/CybersecurityChatbot.csproj
+
     - name: Build
-      run: dotnet build --no-restore CybersecurityChatbot.csproj -c Release
+      run: dotnet build --no-restore src/CybersecurityChatbot/CybersecurityChatbot.csproj -c Release
