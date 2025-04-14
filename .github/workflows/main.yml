@@ -7,15 +7,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '9.0.x'
+        dotnet-version: '9.0.x' # Use the version you're targeting
 
     - name: Restore dependencies
-      run: dotnet restore CybersecurityChatbot.csproj
+      run: dotnet restore
+      working-directory: CybersecurityChatbot
 
-    - name: Build
-      run: dotnet build --no-restore CybersecurityChatbot.csproj -c Release
+    - name: Build project
+      run: dotnet build --no-restore -c Release
+      working-directory: CybersecurityChatbot
