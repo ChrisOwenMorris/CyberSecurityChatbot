@@ -1,6 +1,5 @@
 ﻿// Program.cs
 using System;
-using System.Media; // Potentially still needed for SoundPlayer if not fully moved
 
 namespace CybersecurityChatbot
 {
@@ -8,16 +7,16 @@ namespace CybersecurityChatbot
     {
         static void Main(string[] args)
         {
-            // Part 1 implementations, now called from Chatbot.cs
+            // Welcome audio and art
             Chatbot.PlayWelcomeAudio();
             Chatbot.DisplayAsciiArt();
             Chatbot.GreetUser();
 
-            // Main chatbot loop
+            // Chat loop
             while (true)
             {
-                Console.Write($"\n{Chatbot.UserName}> "); // Personalized prompt
-                string userInput = Console.ReadLine();
+                Console.Write($"\n{Chatbot.UserName}> ");
+                string? userInput = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(userInput))
                 {
@@ -27,7 +26,7 @@ namespace CybersecurityChatbot
                     continue;
                 }
 
-                string lowerInput = userInput.ToLower().Trim(); // Clean input
+                string lowerInput = userInput.ToLower().Trim();
 
                 if (lowerInput == "exit" || lowerInput == "bye" || lowerInput == "quit")
                 {
@@ -37,9 +36,8 @@ namespace CybersecurityChatbot
                     break;
                 }
 
-                // This is where Part 2 logic will be integrated
-                string response = ChatbotLogic.ProcessUserInput(userInput); // We will create ChatbotLogic next
-                Console.ForegroundColor = ConsoleColor.White; // Default bot response color
+                string response = ChatbotLogic.ProcessUserInput(userInput);
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(response);
                 Console.ResetColor();
             }

@@ -131,7 +131,7 @@ namespace CybersecurityChatbot
                 int randomIndex = _random.Next(responses.Count);
                 return responses[randomIndex];
             }
-            return null; // Should ideally not happen if topicKey is valid
+            return "I'm not sure how to respond to that. Could you try asking in a different way?"; 
         }
 
         // --- Sentiment Detection Responses ---
@@ -167,7 +167,7 @@ namespace CybersecurityChatbot
             {
                 return FollowUpResponses[key];
             }
-            return null;
+            return "I'm not sure how to respond to that. Could you try asking in a different way?";
         }
 
         // --- Default/Error Handling Responses ---
