@@ -1,3 +1,4 @@
+#error with workflow: "refractor:Move core chatbotfunctions and memory to Chatbot.cs" this error can be explained by means that there files with classes named that were not yet created and it is the same error for : "feat: Add ChatbotResponses class with keyword, random, and sentiment data" this will also explain the two other workflow errors when i had created tags and releases, they will also fail because the code remained the same and the errors were only fixed in the second last version
 name: C# CI
 
 on: [push]
