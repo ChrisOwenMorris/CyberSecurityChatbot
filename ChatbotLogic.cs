@@ -1,6 +1,11 @@
 using System;
 using System.Linq; // For .Any() and other LINQ methods
 using System.Text.RegularExpressions; // If you want more advanced keyword matching
+// Project: Cybersecurity Chatbot
+// Developed with assistance from:
+// - Google Gemini AI (for code generation, logic structure, and problem-solving)
+// - OpenAI ChatGPT (for brainstorming, refining responses, and understanding concepts)
+//
 
 namespace CybersecurityChatbot
 {

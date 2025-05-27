@@ -1,45 +1,71 @@
 ﻿// Program.cs
-using System;
+using System; // Provides fundamental classes and base types for defining commonly used data types, console input/output, and exception handling.
+
+// Project: Cybersecurity Chatbot
+// Developed with assistance from:
+// - Google Gemini AI (for code generation, logic structure, and problem-solving)
+// - OpenAI ChatGPT (for brainstorming, refining responses, and understanding concepts)
+//
 
 namespace CybersecurityChatbot
 {
+    /// <summary>
+    /// The main entry point of the Cybersecurity Chatbot application.
+    /// This class orchestrates the overall flow of the chatbot,
+    /// including initialization, the main conversation loop, and termination.
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// The main method where the chatbot application execution begins.
+        /// It handles the initial setup, user greeting, and the continuous interaction loop.
+        /// </summary>
+        /// <param name="args">Command-line arguments (not used in this application).</param>
         static void Main(string[] args)
         {
-            // Welcome audio and art
-            Chatbot.PlayWelcomeAudio();
-            Chatbot.DisplayAsciiArt();
-            Chatbot.GreetUser();
+            // Initial setup sequence for the chatbot.
+            // Plays a welcome audio, displays ASCII art, and greets the user by asking for their name.
+            Chatbot.PlayWelcomeAudio(); // Invokes the method to play the welcome sound (Windows only).
+            Chatbot.DisplayAsciiArt();  // Invokes the method to display the chatbot's ASCII art logo.
+            Chatbot.GreetUser();        // Invokes the method to greet the user and get their name.
 
-            // Chat loop
+            // The main conversational loop.
+            // The chatbot continuously prompts for user input and provides responses until the user decides to exit.
             while (true)
             {
+                // Prompts the user for input using their personalized name.
                 Console.Write($"\n{Chatbot.UserName}> ");
-                string? userInput = Console.ReadLine();
+                string? userInput = Console.ReadLine(); // Reads the entire line of input from the console.
 
+                // Checks if the user's input is empty or consists only of white-space characters.
                 if (string.IsNullOrWhiteSpace(userInput))
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Please type something. How can I help you today?");
-                    Console.ResetColor();
-                    continue;
+                    Console.ForegroundColor = ConsoleColor.Red; // Sets the console text color to red for error messages.
+                    Console.WriteLine("Please type something. How can I help you today?"); // Provides a prompt for valid input.
+                    Console.ResetColor(); // Resets the console text color to default.
+                    continue; // Skips the rest of the loop and prompts for input again.
                 }
 
+                // Converts the user's input to lowercase and removes leading/trailing white-space for easier processing.
                 string lowerInput = userInput.ToLower().Trim();
 
+                // Checks if the user wants to exit the conversation using predefined exit commands.
                 if (lowerInput == "exit" || lowerInput == "bye" || lowerInput == "quit")
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine($"\nGoodbye, {Chatbot.UserName}! Stay safe online and remember to always be vigilant!");
-                    Console.ResetColor();
-                    break;
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Sets the console text color to yellow for exit message.
+                    Console.WriteLine($"\nGoodbye, {Chatbot.UserName}! Stay safe online and remember to always be vigilant!"); // Displays a personalized farewell message.
+                    Console.ResetColor(); // Resets the console text color.
+                    break; // Exits the while loop, ending the application.
                 }
 
+                // Processes the user's input using the core chatbot logic.
+                // The ChatbotLogic.ProcessUserInput method determines the appropriate response based on keywords, sentiment, etc.
                 string response = ChatbotLogic.ProcessUserInput(userInput);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(response);
-                Console.ResetColor();
+
+                // Displays the chatbot's response to the console.
+                Console.ForegroundColor = ConsoleColor.Blue; // Sets the console text color to white for chatbot responses.
+                Console.WriteLine(response); // Prints the response generated by ChatbotLogic.
+                Console.ResetColor(); // Resets the console text color.
             }
         }
     }

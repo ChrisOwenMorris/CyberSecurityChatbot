@@ -1,6 +1,11 @@
 // ChatbotResponses.cs
 using System;
 using System.Collections.Generic;
+// Project: Cybersecurity Chatbot
+// Developed with assistance from:
+// - Google Gemini AI (for code generation, logic structure, and problem-solving)
+// - OpenAI ChatGPT (for brainstorming, refining responses, and understanding concepts)
+//
 
 namespace CybersecurityChatbot
 {
@@ -131,7 +136,7 @@ namespace CybersecurityChatbot
                 int randomIndex = _random.Next(responses.Count);
                 return responses[randomIndex];
             }
-            return "I'm not sure how to respond to that. Could you try asking in a different way?"; 
+            return "I'm not sure how to respond to that. Could you try asking in a different way?";
         }
 
         // --- Sentiment Detection Responses ---
